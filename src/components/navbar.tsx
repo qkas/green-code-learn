@@ -6,23 +6,29 @@ import GetStartedButton from '@/components/ui/get-started-button';
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-around px-6 py-4 bg-transparent">
+    <nav className="flex items-center justify-around px-6 py-4">
       <Link href="/">
-        <div className="relative flex items-center group hover:scale-105">
+        <div className="flex items-center group hover:scale-105">
           <Image
-            src="/leaves-light.png"
-            alt="CodeGreen Logo"
-            width={60}
-            height={60}
+            src="/logo-light.png"
+            alt="CodeGreen Logo Light"
+            width={100}
+            height={80}
+            className="h-8 w-auto mr-2 dark:block hidden"
           />
-          <h1 className="text-3xl pr-3 font-bold font-[family-name:var(--font-geist-sans)] rounded-lg text-[var(--foreground)] transition">
+          <Image
+            src="/logo-dark.png"
+            alt="CodeGreen Logo Dark"
+            width={100}
+            height={80}
+            className="h-8 w-auto mr-2 dark:hidden block"
+          />
+          <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl rounded-lg transition">
             Codegreen
           </h1>
-          {/* underline effect */}
-          <div className="absolute bottom-[4px] left-1 w-full h-[2px] bg-[var(--foreground)] scale-x-0 origin-center transition-transform duration-75 ease-in-out group-hover:scale-x-100"></div>
         </div>
       </Link>
-      <GetStartedButton/>
+      <GetStartedButton />
     </nav>
   );
 }
