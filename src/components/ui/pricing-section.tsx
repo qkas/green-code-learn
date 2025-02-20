@@ -2,10 +2,10 @@ import PricingCard from "@/components/ui/pricing-card";
 
 export default function PricingSection() {
 	return (
-		<div>
-			<h2 className="text-4xl font-bold">Explore our pricing plans</h2>
-			<h3 className="text-5md mb-10 font-bold text-[--highlight]">All paid plans include a 3-day free trial</h3>
-			<div className="flex flex-wrap gap-5 justify-center">
+		<div className="flex flex-col items-center">
+			<h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Explore our pricing plans</h2>
+			<h3 className="text-base sm:text-lg lg:text-xl mb-10 text-[--highlight]">All paid plans include a 3-day free trial</h3>
+			<div className="flex flex-wrap justify-center mx-10 md:mx-0 gap-5">
 				<PricingCard
 					title="Trial"
 					price="FREE"
