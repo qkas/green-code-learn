@@ -21,7 +21,7 @@ export default function PricingCard({ title, price, features, link = "/login" }:
       <ul className="list-none flex flex-col w-full">
         {features.map((feature, index) => (
           <li key={index} className="my-3 flex text-sm">
-            <CheckCircle fontSize="small" />
+            <CheckCircle className="text-highlight" fontSize="small" />
             <span className="ml-2">{feature}</span>
           </li>
         ))}
