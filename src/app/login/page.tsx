@@ -1,3 +1,5 @@
+import GHLogin from "@/components/ui/github-login";
+
 export default function Login() {
   return (
     <div className="flex flex-col w-fit mx-auto rounded-2xl border-2 border-foreground text-center mt-20 gap-10 items-center p-6">
@@ -10,7 +12,7 @@ export default function Login() {
         </h2>
       </div>
       <div className="flex flex-col gap-5">
-
+        <GHLogin />
       </div>
     </div>
   );
