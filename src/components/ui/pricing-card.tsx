@@ -18,15 +18,15 @@ export default function PricingCard({ title, price, features, link = "/login" }:
         <h3 className="font-bold text-2xl">{title}</h3>
         <h3 className="text-xl">{price}</h3>
       </div>
-      <ul className="list-none flex flex-col w-full">
+      <ul className="list-none flex flex-col md:w-fit md:mx-auto">
         {features.map((feature, index) => (
-          <li key={index} className="my-3 flex text-sm">
+          <li key={index} className="my-3 flex md:w-fit text-sm">
             <CheckCircle className="text-highlight" fontSize="small" />
-            <span className="ml-2">{feature}</span>
+            <span className="mx-2">{feature}</span>
           </li>
         ))}
       </ul>
-      <button className="mt-auto py-2 w-[80%] mx-auto uppercase font-bold rounded-lg border-2 border-foreground bg-foreground text-background hover:border-foreground hover:bg-background hover:text-foreground hover:scale-105 transition">
+      <button className="mt-auto py-2 w-full mx-auto uppercase font-bold rounded-lg border-2 border-foreground bg-foreground text-background hover:border-foreground hover:bg-background hover:text-foreground hover:scale-105 transition">
         Get Started
       </button>
     </Link>
