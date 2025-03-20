@@ -10,8 +10,7 @@ export default function Navbar() {
   console.log(session);
 
   return (
-    <nav className="flex items-center justify-around px-6 py-4">
-      <div className="flex items-center justify-around px-6 py-4 gap-2">
+    <nav className="flex items-center justify-around px-6 py-4 gap-5">
       <Link href="/">
         <Image
           src="/logo-accent.png"
@@ -21,24 +20,19 @@ export default function Navbar() {
           className="hover:scale-105"
         />
       </Link>
-        {session ? (
-          <div className="courses-module hover:scale-105  transition">
-            <Link href="/modules">
-              <span className="text-gray-700 dark:text-gray-300 hover:text-[--highlight] transition">
-                Course Modules
-              </span>
+      <div className='flex items-center gap-5 font-bold'>
+        <div className='flex flex-col sm:flex-row sm:gap-5 items-center text-sm sm:text-base lg:text-lg'>
+          {session ? (
+            <Link href="/course" className='hover:underline transition'>
+              Course
             </Link>
-          </div>
-        ) : null}
-        <div className="courses-module hover:scale-105  transition">
-          <Link href="/faq">
-            <span className="text-gray-700 dark:text-gray-300 hover:text-[--highlight] transition">
-              FAQ
-            </span>
+          ) : null}
+          <Link href="/faq" className='hover:underline transition'>
+            FAQ
           </Link>
         </div>
+        <GetStartedButton />
       </div>
-      <GetStartedButton />
     </nav>
   );
 }
