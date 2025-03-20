@@ -10,47 +10,29 @@ export default function Navbar() {
   console.log(session);
 
   return (
-    <nav className="flex items-center justify-around px-6 py-4">
-      <div className="flex items-center gap-10">
-        <Link href="/">
-          <div className="flex items-center gap-2 group hover:scale-105 transition">
-            <Image
-              src="/logo-light.png"
-              alt="CodeGreen Logo Light"
-              width={100}
-              height={80}
-              className="h-8 w-auto dark:block hidden"
-            />
-            <Image
-              src="/logo-dark.png"
-              alt="CodeGreen Logo Dark"
-              width={100}
-              height={80}
-              className="h-8 w-auto dark:hidden block"
-            />
-            <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl">
-              Codegreen
-            </h1>
-          </div>
-        </Link>
-        {session ? (
-          <div className="courses-module hover:scale-105  transition">
-            <Link href="/modules">
-              <span className="text-gray-700 dark:text-gray-300 hover:text-[--highlight] transition">
-                Course Modules
-              </span>
+    <nav className="flex items-center justify-around px-6 py-4 gap-5">
+      <Link href="/">
+        <Image
+          src="/logo-accent.png"
+          alt="CodeGreen Logo Dark"
+          width={100}
+          height={80}
+          className="hover:scale-105"
+        />
+      </Link>
+      <div className='flex items-center gap-5 font-bold'>
+        <div className='flex flex-col sm:flex-row sm:gap-5 items-center text-sm sm:text-base lg:text-lg'>
+          {session ? (
+            <Link href="/course" className='hover:underline transition'>
+              Course
             </Link>
-          </div>
-        ) : null}
-        <div className="courses-module hover:scale-105  transition">
-          <Link href="/faq">
-            <span className="text-gray-700 dark:text-gray-300 hover:text-[--highlight] transition">
-              FAQ
-            </span>
+          ) : null}
+          <Link href="/faq" className='hover:underline transition'>
+            FAQ
           </Link>
         </div>
+        <GetStartedButton />
       </div>
-      <GetStartedButton />
     </nav>
   );
 }
