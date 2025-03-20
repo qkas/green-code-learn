@@ -6,12 +6,12 @@ export default function Home() {
     <div className="flex flex-col text-center mt-20 gap-20 items-center p-6">
 
       <h1 className="max-w-6xl text-3xl sm:text-5xl lg:text-6xl font-bold">
-        Green Code Certificate – Build <span className="text-[--highlight]">Sustainable</span> Software
+        EcoBit Green Code Certificate – Build <span className="text-[--highlight]">Sustainable</span> Software
       </h1>
 
       <p className="text-base sm:text-lg lg:text-2lg max-w-5xl">
-        The Green Code Certificate is a study program for developers, aiming to teach sustainable programming practices.
-        From choosing the correct frameworks to optimizing code, this course will explain all you need to know aboutwriting green code.
+        The EcoBit Green Code Certificate is a study program for developers, aiming to teach sustainable programming practices.
+        From choosing the correct frameworks to optimizing code, this course will explain all you need to know about writing green code.
       </p>
 
       <PricingSection />
