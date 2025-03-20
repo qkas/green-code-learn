@@ -11,28 +11,16 @@ export default function Navbar() {
 
   return (
     <nav className="flex items-center justify-around px-6 py-4">
-      <div className="flex items-center gap-10">
-        <Link href="/">
-          <div className="flex items-center gap-2 group hover:scale-105 transition">
-            <Image
-              src="/logo-light.png"
-              alt="CodeGreen Logo Light"
-              width={100}
-              height={80}
-              className="h-8 w-auto dark:block hidden"
-            />
-            <Image
-              src="/logo-dark.png"
-              alt="CodeGreen Logo Dark"
-              width={100}
-              height={80}
-              className="h-8 w-auto dark:hidden block"
-            />
-            <h1 className="font-bold text-xl sm:text-2xl lg:text-3xl">
-              Codegreen
-            </h1>
-          </div>
-        </Link>
+      <div className="flex items-center justify-around px-6 py-4 gap-2">
+      <Link href="/">
+        <Image
+          src="/logo-accent.png"
+          alt="CodeGreen Logo Dark"
+          width={100}
+          height={80}
+          className="hover:scale-105"
+        />
+      </Link>
         {session ? (
           <div className="courses-module hover:scale-105  transition">
             <Link href="/modules">
