@@ -16,22 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Codegreen: The Green Engineering Certificate Platform For Responsible Developers",
-  description: "Learn about sustainable code and engineering practices to keep your projects faster and the planet greener.Get certified with an official badge you can share with recruiters.",
-  icons: {
-    icon: [
-      {
-        media: '(prefers-color-scheme: light)',
-        url: '/icon-dark.ico',
-        href: '/icon-dark.ico',
-      },
-      {
-        media: '(prefers-color-scheme: dark)',
-        url: '/icon-light.ico',
-        href: '/icon-light.ico',
-      },
-    ],
-  },
+  title: "EcoBit: The Green Engineering Certificate Platform For Responsible Developers",
+  description: "Learn about sustainable code and engineering practices to keep your projects faster and the planet greener. Get certified with an official badge you can share with recruiters.",
 };
 
 export default function RootLayout({
