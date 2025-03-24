@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowForwardIos } from "@mui/icons-material";
 
 export default function CoursePage() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="">
       <h1 className="text-4xl font-bold mb-6">Green Code Certificate Course</h1>
       
       <div className="prose prose-lg mb-8">
@@ -16,7 +17,7 @@ export default function CoursePage() {
         
         <h2 className="text-2xl font-bold mt-8 mb-4">Course Overview</h2>
         <p>
-          Throughout this course, you'll learn about:
+          Throughout this course, you&apos;ll learn about:
         </p>
         <ul className="list-disc pl-6 mb-6">
           <li>Fundamental principles of sustainable programming</li>
@@ -37,22 +38,10 @@ export default function CoursePage() {
       <div className="mt-12">
         <Link
           href="/course/module-1"
-          className="inline-flex items-center px-6 py-3 bg-accent text-background rounded-lg hover:bg-accent/90 transition-colors"
+          className="flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-[--accent] bg-[--accent] text-background hover:border-[--accent] hover:scale-105 hover:bg-background hover:text-[--accent] transition"
         >
           Start Module 1: Introduction to Green Code
-          <svg
-            className="w-5 h-5 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 7l5 5m0 0l-5 5m5-5H6"
-            />
-          </svg>
+          <ArrowForwardIos/>
         </Link>
       </div>
     </div>
