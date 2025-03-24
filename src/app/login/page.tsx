@@ -7,7 +7,7 @@ export default function Login() {
   const { data: session } = useSession();
 
   return (
-    <div className="flex flex-col w-fit justify-center mx-auto rounded-2xl border-2 border-foreground text-center mt-20 items-center p-6">
+    <div className="flex flex-col w-fit justify-center mx-auto rounded-2xl text-center mt-20 items-center p-6">
       <h1 className="max-w-6xl text-3xl sm:text-5xl lg:text-6xl font-bold">
         Login
       </h1>
