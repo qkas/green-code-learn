@@ -1,6 +1,5 @@
 import PricingSection from "@/components/ui/pricing-section";
 import GetStartedButton from "@/components/ui/get-started-button";
-import Image from "next/image";
 
 export default function Home() {
   return (
