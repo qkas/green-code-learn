@@ -1,6 +1,6 @@
 export default function Module3Page() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="">
       <h1 className="text-4xl font-bold mb-6">Module 3: Sustainable Architecture</h1>
       
       <div className="prose prose-lg">
