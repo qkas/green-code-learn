@@ -5,7 +5,7 @@ import Link from 'next/link';
 import GetStartedButton from '@/components/ui/get-started-button';
 import { useSession, signOut } from "next-auth/react";
 import { useState, useEffect, useRef } from 'react';
-import { Menu } from '@mui/icons-material';
+import { Menu, Close } from '@mui/icons-material';
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -17,6 +17,10 @@ export default function Navbar() {
     setIsMenuOpen((prev) => !prev);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -25,7 +29,7 @@ export default function Navbar() {
         buttonRef.current &&
         !buttonRef.current.contains(event.target as Node)
       ) {
-        setIsMenuOpen(false);
+        closeMenu();
       }
     };
 
@@ -61,21 +65,24 @@ export default function Navbar() {
               className="text-xl focus:outline-none"
               aria-label="Toggle menu"
             >
-              <Menu />
+              {isMenuOpen ? <Close /> : <Menu />}
             </button>
             {isMenuOpen && (
               <div
                 ref={menuRef}
                 className="absolute flex flex-col right-4 mt-2 font-bold text-base border-2 bg-background rounded-lg text-end p-4 z-50"
               >
-                <Link href="/course" className="hover:underline text-accent transition w-full">
+                <Link href="/course" className="hover:underline text-accent transition w-full" onClick={closeMenu}>
                   Course
                 </Link>
-                <Link href="/faq" className="hover:underline transition w-full">
+                <Link href="/faq" className="hover:underline transition w-full" onClick={closeMenu}>
                   FAQ
                 </Link>
                 <button
-                  onClick={() => signOut()}
+                  onClick={() => {
+                    closeMenu();
+                    signOut();
+                  }}
                   className="hover:underline transition w-full"
                 >
                   Sign out
