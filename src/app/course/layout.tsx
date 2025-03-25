@@ -41,7 +41,7 @@ export default function CourseLayout({
 
   if (!session) {
     return (
-      <div className="flex flex-col items-center justify-center mt-20">
+      <div className="flex flex-col items-center justify-center sm:mt-10">
         <h1 className="text-2xl font-bold mb-4">Please sign in to access the course</h1>
         <Link
           href="/login"
@@ -54,8 +54,8 @@ export default function CourseLayout({
   }
 
   return (
-    <div className="flex flex-wrap sm:flex-nowrap divide-y-2 sm:divide-none justify-between mt-20">
-      <div className="min-w-60 bg-background p-5">
+    <div className="flex flex-wrap sm:flex-nowrap divide-y-2 sm:divide-none justify-between sm:mt-10">
+      <div className="min-w-60 bg-background p-5 sm:mx-10">
         <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">Course Modules</h2>
         <nav className="space-y-2">
           {modules.map((module) => (
@@ -65,7 +65,7 @@ export default function CourseLayout({
               className={`block p-3 rounded-lg ${
                 pathname === module.path
                   ? "border-2 border-accent"
-                  : "hover:bg-foreground/5"
+                  : ""
               }`}
             >
               <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold">{module.title}</h3>
