@@ -31,6 +31,37 @@ const modules = [
   },
 ];
 
+function NextModuleLink({ currentPath }: { currentPath: string }) {
+  const currentIndex = modules.findIndex((module) => module.path === currentPath);
+  const nextModule = modules[currentIndex + 1];
+
+  if (currentPath === "/course") return null;
+
+  if (!nextModule) { // last module
+    return (
+      <div className="mt-8 flex justify-end">
+        <Link
+          href="/test"
+          className="py-2 text-center uppercase text-nowrap w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-accent bg-accent text-background hover:border-accent hover:scale-105 hover:bg-background hover:text-accent transition"
+        >
+          Take Final Test
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-8 flex justify-end">
+      <Link
+        href={nextModule.path}
+        className="py-2 text-center uppercase text-nowrap w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-accent bg-accent text-background hover:border-accent hover:scale-105 hover:bg-background hover:text-accent transition"
+      >
+        Next Module: {nextModule.title}
+      </Link>
+    </div>
+  );
+}
+
 export default function CourseLayout({
   children,
 }: {
@@ -74,7 +105,10 @@ export default function CourseLayout({
           ))}
         </nav>
       </div>
-      <div className="p-10 sm:mx-auto">{children}</div>
+      <div className="p-10 sm:mx-auto">
+        {children}
+        <NextModuleLink currentPath={pathname} />
+      </div>
     </div>
   );
 }
