@@ -51,10 +51,10 @@ function NextModuleLink({ currentPath }: { currentPath: string }) {
   }
 
   return (
-    <div className="mt-8 flex justify-end">
+    <div className="mt-12">
       <Link
-        href={nextModule.path}
-        className="py-2 text-center uppercase text-nowrap w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-accent bg-accent text-background hover:border-accent hover:scale-105 hover:bg-background hover:text-accent transition"
+        href="/course/module-1"
+        className="flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-[--accent] bg-[--accent] text-background hover:border-[--accent] hover:scale-105 hover:bg-background hover:text-[--accent] transition"
       >
         Next Module: {nextModule.title}
       </Link>
@@ -85,19 +85,18 @@ export default function CourseLayout({
   }
 
   return (
-    <div className="flex flex-wrap sm:flex-nowrap divide-y-2 sm:divide-none justify-between sm:mt-10">
-      <div className="min-w-60 bg-background p-5 sm:mx-10">
+    <div className="flex flex-wrap sm:flex-nowrap gap-10 sm:divide-none justify-between p-10 sm:mt-10">
+      <div className="bg-background">
         <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">Course Modules</h2>
         <nav className="space-y-2">
           {modules.map((module) => (
             <Link
               key={module.id}
               href={module.path}
-              className={`block p-3 rounded-lg ${
-                pathname === module.path
+              className={`block p-3 rounded-lg ${pathname === module.path
                   ? "border-2 border-accent"
-                  : ""
-              }`}
+                  : "border-2 border-background"
+                }`}
             >
               <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold">{module.title}</h3>
               <p className="text-base sm:text-lg lg:text-xl opacity-80">{module.description}</p>
@@ -105,7 +104,7 @@ export default function CourseLayout({
           ))}
         </nav>
       </div>
-      <div className="p-10 sm:mx-auto">
+      <div className="sm:mx-auto w-full">
         {children}
         <NextModuleLink currentPath={pathname} />
       </div>
