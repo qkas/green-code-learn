@@ -11,10 +11,12 @@ export default function Login() {
       <h1 className="max-w-6xl text-3xl sm:text-5xl lg:text-6xl font-bold">
         Login
       </h1>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-10 mt-10">
         {session ? (
           <>
-            <h2 className="my-5 text-lg">Signed in as {session.user?.email}</h2>
+            <h2 className="text-sm sm:text-base lg:text-lg">Signed in as {session.user?.email}</h2>
+            <h2 className="text-base sm:text-lg lg:text-xl font-bold">Plan: Trial</h2>
+            
             <button
               onClick={() => signOut()}
               className="px-12 py-2 flex items-center mx-auto gap-2 border border-grey-300 rounded-lg w-fit shadow-md bg-red-600 text-white hover:bg-red-700"
