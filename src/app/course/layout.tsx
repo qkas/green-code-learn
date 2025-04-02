@@ -54,7 +54,7 @@ function NextModuleLink({ currentPath }: { currentPath: string }) {
   return (
     <div className="mt-12">
       <Link
-        href="/course/module-1"
+        href={nextModule.path}
         className="flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-[--accent] bg-[--accent] text-background hover:border-[--accent] hover:scale-105 hover:bg-background hover:text-[--accent] transition"
       >
         Next Module: {nextModule.title}
