@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 const modules = [
   {
@@ -69,6 +70,10 @@ export default function CourseLayout({
 }) {
   const pathname = usePathname();
   const { data: session } = useSession();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   if (!session) {
     return (
