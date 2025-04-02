@@ -33,7 +33,7 @@ export default function CoursePage() {
         or start with the first module below.
       </p>
 
-      <div className="mt-12">
+      <div className="mt-12 flex justify-end">
         <Link
           href="/course/module-1"
           className="flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-[--accent] bg-[--accent] text-background hover:border-[--accent] hover:scale-105 hover:bg-background hover:text-[--accent] transition"
