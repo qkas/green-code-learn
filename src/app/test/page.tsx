@@ -76,10 +76,10 @@ export default function TestPage() {
               key={index}
               onClick={() => handleAnswerSelect(index)}
               className={`w-full p-4 text-left rounded-lg border-2 transition-colors ${quizState.answers[quizState.currentQuestion] === index
-                  ? 'border-accent bg-accent/10'
-                  : quizState.isSubmitted
-                    ? ''
-                    : 'hover:border-accent'
+                ? 'border-accent bg-accent/10'
+                : quizState.isSubmitted
+                  ? ''
+                  : 'hover:border-accent'
                 } ${quizState.isSubmitted
                   ? index === currentQuestion.correctAnswer
                     ? 'border-green-500'
@@ -100,11 +100,10 @@ export default function TestPage() {
         <button
           onClick={handlePrevious}
           disabled={quizState.currentQuestion === 0}
-          className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${
-            quizState.currentQuestion === 0
-              ? 'opacity-50 cursor-default'
-              : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
-          }`}
+          className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.currentQuestion === 0
+            ? 'opacity-50 cursor-default'
+            : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
+            }`}
         >
           Previous
         </button>
@@ -113,22 +112,20 @@ export default function TestPage() {
           <button
             onClick={handleSubmit}
             disabled={quizState.answers.includes(-1) || quizState.isSubmitted}
-            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${
-              quizState.answers.includes(-1) || quizState.isSubmitted
-                ? 'opacity-50 cursor-default'
-                : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
-            }`}
+            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.answers.includes(-1) || quizState.isSubmitted
+              ? 'opacity-50 cursor-default'
+              : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
+              }`}
           >
             Submit
           </button>
         ) : (
           <button
             onClick={handleNext}
-            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${
-              quizState.currentQuestion === quizQuestions.length - 1
-                ? 'opacity-50 cursor-default'
-                : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
-            }`}
+            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.currentQuestion === quizQuestions.length - 1
+              ? 'opacity-50 cursor-default'
+              : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
+              }`}
           >
             Next
           </button>
@@ -136,16 +133,25 @@ export default function TestPage() {
       </div>
 
       {quizState.isSubmitted && (
-        <div className="mt-8 p-4 bg-accent/10 rounded-lg">
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">
-            Test Results
-          </h3>
-          <p className="text-base sm:text-lg lg:text-xl">
-            Your score: {quizState.score} out of {quizQuestions.length}
-          </p>
-          <p className="text-base sm:text-lg lg:text-xl">
-            Percentage: {(quizState.score / quizQuestions.length * 100).toFixed(1)}%
-          </p>
+        <div className="flex flex-row flex-wrap gap-5 justify-between items-center mt-8 bg-accent/10 rounded-lg">
+          <div>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">
+              You <span className='text-green-500'>passed</span> the test!
+            </h3>
+            <p className="text-base sm:text-lg lg:text-xl">
+              Your score: {quizState.score} out of {quizQuestions.length}
+            </p>
+            <p className="text-base sm:text-lg lg:text-xl">
+              Percentage: {(quizState.score / quizQuestions.length * 100).toFixed(1)}%
+            </p>
+          </div>
+          <a
+            href="/certificate.pdf"
+            download
+            className="px-4 py-2 rounded-lg bg-foreground font-bold border-2 text-center border-foreground text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition hover:bg-foreground/90 hover:scale-105 hover:bg-background hover:text-[--foreground]"
+          >
+            Download Certificate
+          </a>
         </div>
       )}
     </div>
