@@ -126,7 +126,7 @@ export default function TestPage() {
 
       {quizState.isSubmitted && (
         <div className="mt-8 p-4 bg-accent/10 rounded-lg">
-          <h3 className="text-xl font-bold mb-2">Quiz Results</h3>
+          <h3 className="text-xl font-bold mb-2">Test Results</h3>
           <p>Your score: {quizState.score} out of {quizQuestions.length}</p>
           <p>Percentage: {(quizState.score / quizQuestions.length * 100).toFixed(1)}%</p>
         </div>
