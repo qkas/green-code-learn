@@ -86,7 +86,7 @@ export default function TestPage() {
         <button
           onClick={handlePrevious}
           disabled={quizState.currentQuestion === 0}
-          className="px-4 py-2 rounded-lg border-2 border-accent disabled:opacity-50"
+          className="px-4 py-2 rounded-lg bg-accent border-2 border-accent text-black hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent] transition"
         >
           Previous
         </button>
@@ -95,7 +95,7 @@ export default function TestPage() {
           !quizState.isSubmitted && (
             <button
               onClick={handleSubmit}
-              className="px-4 py-2 rounded-lg bg-accent text-white hover:bg-accent/90"
+              className="px-4 py-2 rounded-lg bg-accent border-2 border-accent text-black hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent] transition"
             >
               Submit
             </button>
@@ -103,7 +103,7 @@ export default function TestPage() {
         ) : (
           <button
             onClick={handleNext}
-            className="px-4 py-2 rounded-lg border-2 border-accent"
+            className="px-4 py-2 rounded-lg bg-accent border-2 border-accent text-black hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent] transition"
           >
             Next
           </button>
