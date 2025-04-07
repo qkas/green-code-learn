@@ -26,8 +26,8 @@ export default function PricingSection() {
 					price="1249.99€"
 					features={[
 						"Up to 20 premium accounts",
-						"With access to all modules",
-						"And access to certification"
+						"Access to all modules",
+						"Access to certification"
 					]}
 				/>
 			</div>
