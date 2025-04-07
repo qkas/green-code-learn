@@ -77,7 +77,9 @@ export default function TestPage() {
               onClick={() => handleAnswerSelect(index)}
               className={`w-full p-4 text-left rounded-lg border-2 transition-colors ${quizState.answers[quizState.currentQuestion] === index
                   ? 'border-accent bg-accent/10'
-                  : 'border-gray-200 hover:border-accent'
+                  : quizState.isSubmitted
+                    ? ''
+                    : 'hover:border-accent'
                 } ${quizState.isSubmitted
                   ? index === currentQuestion.correctAnswer
                     ? 'border-green-500'
