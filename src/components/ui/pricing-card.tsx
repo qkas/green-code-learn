@@ -10,7 +10,7 @@ interface PricingCardProps {
 
 export default function PricingCard({ title, price, features }: PricingCardProps) {
   const { data: session } = useSession();
-  const isTrial = title == "Trial";
+  const isCurrent = title == "Pro";
 
   return (
     <div className="p-5 gap-10 md:gap-5 flex flex-col justify-center text-center min-full w-full md:w-fit rounded-lg border-2 border-foreground">
@@ -29,11 +29,11 @@ export default function PricingCard({ title, price, features }: PricingCardProps
       {session ? (
         <div 
           className={`mt-auto py-2 w-full mx-auto uppercase font-bold rounded-lg text-background select-none ${
-            isTrial 
+            isCurrent 
               ? 'bg-accent' : 'bg-foreground'
           }`}
         >
-          {isTrial ? 'Current' : 'Unavailable'}
+          {isCurrent ? 'Current' : 'Unavailable'}
         </div>
       ) : (
         <Link href="/login" className="mt-auto">

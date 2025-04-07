@@ -10,8 +10,7 @@ export default function PricingSection() {
 					title="Trial"
 					price="FREE"
 					features={[
-						"Access to all modules",
-						"Access to final test"
+						"Access to all modules"
 					]}
 				/>
 				<PricingCard

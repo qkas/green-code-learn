@@ -15,7 +15,7 @@ export default function Login() {
         {session ? (
           <>
             <h2 className="text-sm sm:text-base lg:text-lg">Signed in as {session.user?.email}</h2>
-            <h2 className="text-base sm:text-lg lg:text-xl font-bold">Plan: Trial</h2>
+            <h2 className="text-base sm:text-lg lg:text-xl font-bold">Plan: Pro</h2>
             
             <button
               onClick={() => signOut()}
