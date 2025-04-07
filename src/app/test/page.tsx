@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { quizQuestions } from '@/data/quiz';
 import { QuizState } from '@/types/quiz';
+import Link from 'next/link';
 
 export default function TestPage() {
   const [quizState, setQuizState] = useState<QuizState>({
@@ -49,6 +50,19 @@ export default function TestPage() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
+      <Link
+        href="/course/module-3"
+        className="inline-block mb-6 px-4 py-2 rounded-lg bg-accent border-2 border-accent text-black hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent] transition"
+        onClick={(e) => {
+          if (quizState.answers.some(answer => answer !== -1) && !quizState.isSubmitted) {
+            if (!confirm('You have unsaved answers. Are you sure you want to leave?')) {
+              e.preventDefault();
+            }
+          }
+        }}
+      >
+        ← Back to Module
+      </Link>
       <h1 className="text-2xl font-bold mb-8">Green Code Knowledge Test</h1>
       
       <div className="mb-8">
