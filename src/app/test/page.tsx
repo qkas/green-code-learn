@@ -133,8 +133,8 @@ export default function TestPage() {
       </div>
 
       {quizState.isSubmitted && (
-        <div className="flex flex-row flex-wrap gap-5 justify-between items-center mt-8 bg-accent/10 rounded-lg">
-          <div>
+        <div className="flex flex-col sm:flex-row gap-5 justify-center sm:justify-between items-center mt-8 bg-accent/10 rounded-lg">
+          <div className="text-center sm:text-left">
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">
               You <span className='text-green-500'>passed</span> the test!
             </h3>
