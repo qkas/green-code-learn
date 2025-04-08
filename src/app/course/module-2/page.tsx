@@ -1,3 +1,6 @@
+import CompactQuiz from "@/components/ui/module-quiz";
+import { questions } from "@/data/questions";
+
 export default function Module2Page() {
   return (
     <>
@@ -16,6 +19,10 @@ export default function Module2Page() {
         <li>Optimize algorithms for energy efficiency</li>
         <li>Measure and benchmark energy usage</li>
       </ul>
+
+      <CompactQuiz
+        questions={[questions[1]]}
+      />
 
       <h2 className="text-2xl font-bold mt-8 mb-4">Content</h2>
       <p>
