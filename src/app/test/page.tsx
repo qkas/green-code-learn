@@ -155,7 +155,7 @@ export default function TestPage() {
       {quizState.isSubmitted && (
         <div className="flex flex-col sm:flex-row gap-5 justify-center sm:justify-between items-center mt-8 bg-accent/10 rounded-lg">
           <div className="text-center sm:text-left">
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">
+            <h3 className="text-2xl lg:text-3xl font-bold mb-2">
               You <span className='text-green-500'>passed</span> the test!
             </h3>
             <p className="text-base sm:text-lg lg:text-xl">
@@ -168,7 +168,7 @@ export default function TestPage() {
           <a
             href="/certificate.pdf"
             download
-            className="px-4 py-2 rounded-lg bg-foreground font-bold border-2 text-center border-foreground text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition hover:bg-foreground/90 hover:scale-105 hover:bg-background hover:text-[--foreground]"
+            className="px-4 py-2 rounded-lg bg-foreground font-bold border-2 text-center border-foreground text-background sm:px-8 lg:px-10 text-lg lg:text-xl transition hover:bg-foreground/90 hover:scale-105 hover:bg-background hover:text-[--foreground]"
           >
             Download Certificate
           </a>
