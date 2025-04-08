@@ -98,18 +98,21 @@ export default function TestPage() {
                 } text-base sm:text-lg lg:text-xl`}
               disabled={quizState.isSubmitted}
             >
-              {quizState.isSubmitted
-                ? index === currentQuestion.correctAnswer
-                  ? <Check className='text-green-500' />
-                  : quizState.answers[quizState.currentQuestion] === index
-                    ? <Close className='text-red-500' />
-                    : <span className='text-green-500'>
-                      {alphabets[index]}
-                    </span>
-                : <span className={`${quizState.answers[quizState.currentQuestion] === index ? 'text-[--accent]' : ''}`}>
-                  {alphabets[index]}
-                </span>
-              }
+              <div>
+
+                {quizState.isSubmitted
+                  ? index === currentQuestion.correctAnswer
+                    ? <Check className='text-green-500' />
+                    : quizState.answers[quizState.currentQuestion] === index
+                      ? <Close className='text-red-500' />
+                      : <span className='text-green-500'>
+                        {alphabets[index]}
+                      </span>
+                  : <span className={`${quizState.answers[quizState.currentQuestion] === index ? 'text-[--accent]' : ''}`}>
+                    {alphabets[index]}
+                  </span>
+                }
+              </div>
               <span>{option}</span>
             </button>
           ))}
