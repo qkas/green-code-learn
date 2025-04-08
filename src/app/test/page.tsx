@@ -105,7 +105,7 @@ export default function TestPage() {
                     ? <Check className='text-green-500' />
                     : quizState.answers[quizState.currentQuestion] === index
                       ? <Close className='text-red-500' />
-                      : <span className='text-green-500'>
+                      : <span className='text-foreground'>
                         {alphabets[index]}
                       </span>
                   : <span className={`${quizState.answers[quizState.currentQuestion] === index ? 'text-[--accent]' : ''}`}>
