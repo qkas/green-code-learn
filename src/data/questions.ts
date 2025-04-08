@@ -1,6 +1,11 @@
-import { QuizQuestions } from '@/types/quizquestions';
+export interface Questions {
+  id: number
+  question: string
+  options: string[]
+  correctAnswer: number
+}
 
-export const quizQuestions: QuizQuestions[] = [
+export const questions: Questions[] = [
   {
     id: 1,
     question: "What is the primary goal of Green Code?",
