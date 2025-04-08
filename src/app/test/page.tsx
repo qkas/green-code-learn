@@ -1,18 +1,26 @@
 "use client";
 
 import { useState } from 'react';
-import { quizQuestions } from '@/data/quiz';
-import { QuizState } from '@/types/quiz';
+import { questions } from '@/data/questions';
 import Link from 'next/link';
-import { ArrowBackIos } from '@mui/icons-material';
+import { ArrowBackIos, Check, Close } from '@mui/icons-material';
+
+export interface QuizState {
+  currentQuestion: number
+  answers: number[]
+  score: number
+  isSubmitted: boolean
+}
 
 export default function TestPage() {
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestion: 0,
-    answers: Array(quizQuestions.length).fill(-1),
+    answers: Array(questions.length).fill(-1),
     score: 0,
     isSubmitted: false,
   });
+
+  const alphabets = ['A', 'B', 'C', 'D']
 
   const handleAnswerSelect = (optionIndex: number) => {
     if (quizState.isSubmitted) return;
@@ -24,14 +32,14 @@ export default function TestPage() {
 
   const handleSubmit = () => {
     const score = quizState.answers.reduce((total, answer, index) => {
-      return total + (answer === quizQuestions[index].correctAnswer ? 1 : 0);
+      return total + (answer === questions[index].correctAnswer ? 1 : 0);
     }, 0);
 
     setQuizState({ ...quizState, score, isSubmitted: true });
   };
 
   const handleNext = () => {
-    if (quizState.currentQuestion < quizQuestions.length - 1) {
+    if (quizState.currentQuestion < questions.length - 1) {
       setQuizState({ ...quizState, currentQuestion: quizState.currentQuestion + 1 });
     }
   };
@@ -42,7 +50,7 @@ export default function TestPage() {
     }
   };
 
-  const currentQuestion = quizQuestions[quizState.currentQuestion];
+  const currentQuestion = questions[quizState.currentQuestion];
 
   return (
     <div className="max-w-2xl mx-auto p-6">
@@ -75,14 +83,14 @@ export default function TestPage() {
             <button
               key={index}
               onClick={() => handleAnswerSelect(index)}
-              className={`w-full p-4 text-left rounded-lg border-2 transition-colors ${quizState.answers[quizState.currentQuestion] === index
+              className={`flex gap-5 w-full p-4 text-left rounded-lg border-2 transition-colors ${quizState.answers[quizState.currentQuestion] === index
                 ? 'border-accent bg-accent/10'
                 : quizState.isSubmitted
                   ? ''
                   : 'hover:border-accent'
                 } ${quizState.isSubmitted
                   ? index === currentQuestion.correctAnswer
-                    ? 'border-green-500'
+                    ? 'border-green-500 border-dashed'
                     : quizState.answers[quizState.currentQuestion] === index
                       ? 'border-red-500'
                       : ''
@@ -90,7 +98,19 @@ export default function TestPage() {
                 } text-base sm:text-lg lg:text-xl`}
               disabled={quizState.isSubmitted}
             >
-              {option}
+              {quizState.isSubmitted
+                ? index === currentQuestion.correctAnswer
+                  ? <Check className='text-green-500' />
+                  : quizState.answers[quizState.currentQuestion] === index
+                    ? <Close className='text-red-500' />
+                    : <span className='text-green-500'>
+                      {alphabets[index]}
+                    </span>
+                : <span className={`${quizState.answers[quizState.currentQuestion] === index ? 'text-[--accent]' : ''}`}>
+                  {alphabets[index]}
+                </span>
+              }
+              <span>{option}</span>
             </button>
           ))}
         </div>
@@ -108,7 +128,7 @@ export default function TestPage() {
           Previous
         </button>
 
-        {quizState.currentQuestion === quizQuestions.length - 1 ? (
+        {quizState.currentQuestion === questions.length - 1 ? (
           <button
             onClick={handleSubmit}
             disabled={quizState.answers.includes(-1) || quizState.isSubmitted}
@@ -122,7 +142,7 @@ export default function TestPage() {
         ) : (
           <button
             onClick={handleNext}
-            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.currentQuestion === quizQuestions.length - 1
+            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.currentQuestion === questions.length - 1
               ? 'opacity-50 cursor-default'
               : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
               }`}
@@ -139,10 +159,10 @@ export default function TestPage() {
               You <span className='text-green-500'>passed</span> the test!
             </h3>
             <p className="text-base sm:text-lg lg:text-xl">
-              Your score: {quizState.score} out of {quizQuestions.length}
+              Your score: {quizState.score} out of {questions.length}
             </p>
             <p className="text-base sm:text-lg lg:text-xl">
-              Percentage: {(quizState.score / quizQuestions.length * 100).toFixed(1)}%
+              Percentage: {(quizState.score / questions.length * 100).toFixed(1)}%
             </p>
           </div>
           <a
