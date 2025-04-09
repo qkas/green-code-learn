@@ -78,14 +78,6 @@ export default function CompactQuiz({ questions }: QuizProps) {
           </button>
         ))}
       </div>
-
-      {isSubmitted && (
-        <div className="mt-3 sm:mt-4 text-center p-2 bg-accent/10 rounded">
-          <p className="text-sm sm:text-base font-medium">
-            Score: {score}/{questions.length}
-          </p>
-        </div>
-      )}
     </div>
   );
 }
