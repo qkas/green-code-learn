@@ -1,4 +1,4 @@
-import CompactQuiz from "@/components/ui/module-quiz";
+import CompactQuiz from "@/components/ui/CompactQuiz";
 import { questions } from "@/data/questions";
 
 export default function Module3Page() {
