@@ -22,12 +22,30 @@ export default function TestPage() {
 
   const alphabets = ['A', 'B', 'C', 'D']
 
-  const handleAnswerSelect = (optionIndex: number) => {
+  const handleAnswerSelect = (optionIndex: number, questionIndex: number) => {
     if (quizState.isSubmitted) return;
 
     const newAnswers = [...quizState.answers];
-    newAnswers[quizState.currentQuestion] = optionIndex;
+    newAnswers[questionIndex] = optionIndex;
     setQuizState({ ...quizState, answers: newAnswers });
+
+    // Find the next unanswered question
+    const nextUnansweredIndex = newAnswers.findIndex((answer, index) => index > questionIndex && answer === -1);
+    
+    // If there's an unanswered question after the current one, scroll to it
+    if (nextUnansweredIndex !== -1) {
+      const nextQuestionElement = document.getElementById(`question-${nextUnansweredIndex}`);
+      if (nextQuestionElement) {
+        const elementRect = nextQuestionElement.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
+        window.scrollTo({
+          top: middle,
+          behavior: 'smooth'
+        });
+        setQuizState(prev => ({ ...prev, currentQuestion: nextUnansweredIndex }));
+      }
+    }
   };
 
   const handleSubmit = () => {
@@ -69,89 +87,69 @@ export default function TestPage() {
         Back to Module
       </Link>
 
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-12 mb-8">
         Green Code Knowledge Test
       </h1>
 
-      <div className="mb-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl mb-4">
-          Question {currentQuestion.id}: {currentQuestion.question}
-        </h2>
+      <div className="space-y-12">
+        {questions.map((question, index) => (
+          <div key={index} id={`question-${index}`} className="scroll-mt-[50vh]">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl mb-4">
+              Question {question.id}: {question.question}
+            </h2>
 
-        <div className="space-y-4">
-          {currentQuestion.options.map((option, index) => (
-            <button
-              key={index}
-              onClick={() => handleAnswerSelect(index)}
-              className={`flex gap-5 w-full p-4 text-left rounded-lg border-2 transition-colors ${quizState.answers[quizState.currentQuestion] === index
-                ? 'border-accent bg-accent/10'
-                : quizState.isSubmitted
-                  ? ''
-                  : 'hover:border-accent'
-                } ${quizState.isSubmitted
-                  ? index === currentQuestion.correctAnswer
-                    ? quizState.answers[quizState.currentQuestion] === index
-                      ? 'border-green-500'
-                      : 'border-green-500 border-dashed'
-                    : quizState.answers[quizState.currentQuestion] === index
-                      ? 'border-red-500'
-                      : ''
-                  : ''} text-base sm:text-lg lg:text-xl`}
-              disabled={quizState.isSubmitted}
-            >
-              <div>
-
-                {quizState.isSubmitted
-                  ? index === currentQuestion.correctAnswer
-                    ? <Check className='text-green-500' />
-                    : quizState.answers[quizState.currentQuestion] === index
-                      ? <Close className='text-red-500' />
-                      : <span className='text-foreground'>
-                        {alphabets[index]}
-                      </span>
-                  : <span className={`${quizState.answers[quizState.currentQuestion] === index ? 'text-[--accent]' : ''}`}>
-                    {alphabets[index]}
-                  </span>
-                }
-              </div>
-              <span>{option}</span>
-            </button>
-          ))}
-        </div>
+            <div className="space-y-4">
+              {question.options.map((option, optionIndex) => (
+                <button
+                  key={optionIndex}
+                  onClick={() => handleAnswerSelect(optionIndex, index)}
+                  className={`flex gap-5 w-full p-4 text-left rounded-lg border-2 transition-colors ${quizState.answers[index] === optionIndex
+                    ? 'border-accent bg-accent/10'
+                    : quizState.isSubmitted
+                      ? ''
+                      : 'hover:border-accent'
+                    } ${quizState.isSubmitted
+                      ? optionIndex === question.correctAnswer
+                        ? quizState.answers[index] === optionIndex
+                          ? 'border-green-500'
+                          : 'border-green-500 border-dashed'
+                        : quizState.answers[index] === optionIndex
+                          ? 'border-red-500'
+                          : ''
+                      : ''} text-base sm:text-lg lg:text-xl`}
+                  disabled={quizState.isSubmitted}
+                >
+                  {quizState.isSubmitted
+                    ? optionIndex === question.correctAnswer
+                      ? <Check className='text-green-500' />
+                      : quizState.answers[index] === optionIndex
+                        ? <Close className='text-red-500' />
+                        : <span className='text-green-500'>
+                          {alphabets[optionIndex]}
+                        </span>
+                    : <span className={`${quizState.answers[index] === optionIndex ? 'text-[--accent]' : ''}`}>
+                      {alphabets[optionIndex]}
+                    </span>
+                  }
+                  <span>{option}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="flex justify-between items-center">
-        <button
-          onClick={handlePrevious}
-          disabled={quizState.currentQuestion === 0}
-          className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.currentQuestion === 0
-            ? 'opacity-50 cursor-default'
-            : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
-            }`}
-        >
-          Previous
-        </button>
-
-        {quizState.currentQuestion === questions.length - 1 ? (
+      <div className="mt-8 flex justify-center">
+        {!quizState.isSubmitted && (
           <button
             onClick={handleSubmit}
-            disabled={quizState.answers.includes(-1) || quizState.isSubmitted}
-            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.answers.includes(-1) || quizState.isSubmitted
+            disabled={quizState.answers.includes(-1)}
+            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 ${quizState.answers.includes(-1)
               ? 'opacity-50 cursor-default'
-              : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
+              : 'hover:bg-accent/90 hover:bg-background hover:text-[--accent]'
               }`}
           >
             Submit
-          </button>
-        ) : (
-          <button
-            onClick={handleNext}
-            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition ${quizState.currentQuestion === questions.length - 1
-              ? 'opacity-50 cursor-default'
-              : 'hover:bg-accent/90 hover:scale-105 hover:bg-background hover:text-[--accent]'
-              }`}
-          >
-            Next
           </button>
         )}
       </div>
