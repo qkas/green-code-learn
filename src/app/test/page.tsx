@@ -140,16 +140,18 @@ export default function TestPage() {
       </div>
 
       <div className="mt-8 flex justify-center">
-        <button
-          onClick={handleSubmit}
-          disabled={quizState.answers.includes(-1) || quizState.isSubmitted}
-          className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 ${quizState.answers.includes(-1) || quizState.isSubmitted
-            ? 'opacity-50 cursor-default'
-            : 'hover:bg-accent/90 hover:bg-background hover:text-[--accent]'
-            }`}
-        >
-          Submit
-        </button>
+        {!quizState.isSubmitted && (
+          <button
+            onClick={handleSubmit}
+            disabled={quizState.answers.includes(-1)}
+            className={`px-4 py-2 rounded-lg bg-accent font-bold border-2 border-accent text-background sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 ${quizState.answers.includes(-1)
+              ? 'opacity-50 cursor-default'
+              : 'hover:bg-accent/90 hover:bg-background hover:text-[--accent]'
+              }`}
+          >
+            Submit
+          </button>
+        )}
       </div>
 
       {quizState.isSubmitted && (
