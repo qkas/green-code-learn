@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check, Close } from '@mui/icons-material';
+import { useQuiz } from '@/context/QuizContext';
 
 interface Question {
   id: number;
@@ -12,13 +13,14 @@ interface Question {
 
 interface QuizProps {
   questions: Question[];
+  onQuizSubmit?: (score: number) => void;
 }
 
-export default function CompactQuiz({ questions }: QuizProps) {
+export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>(Array(questions.length).fill(-1));
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
+  const { setQuizSubmitted } = useQuiz();
 
   const handleAnswer = (optionIndex: number) => {
     if (isSubmitted) return;
@@ -30,16 +32,17 @@ export default function CompactQuiz({ questions }: QuizProps) {
     if (currentQuestion === questions.length - 1) {
       const finalScore = newAnswers.reduce((total, answer, index) => 
         total + (answer === questions[index].correctAnswer ? 1 : 0), 0);
-      setScore(finalScore);
       setIsSubmitted(true);
+      onQuizSubmit?.(finalScore);
+      setQuizSubmitted(true);
     } else {
       setCurrentQuestion(prev => prev + 1);
     }
   };
 
   return (
-    <div className="bg-accent/5 border border-solid border-highlight rounded-lg p-3 sm:p-4 w-full max-w-lg">
-      <h3 className="text-sm sm:text-base text-accent font-medium mb-2">
+    <div className="bg-accent/5 rounded-lg border-2 border-accent p-3 sm:p-4 w-full max-w-lg">
+      <h3 className="text-sm sm:text-base text-highlight font-medium mb-2">
         {questions[currentQuestion].question}
       </h3>
       
