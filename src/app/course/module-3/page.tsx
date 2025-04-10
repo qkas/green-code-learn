@@ -1,7 +1,16 @@
+"use client";
+import { useEffect } from 'react';
+import { useQuiz } from '@/context/QuizContext';
 import CompactQuiz from "@/components/ui/CompactQuiz";
 import { questions } from "@/data/questions";
 
 export default function Module3Page() {
+  const { setQuizSubmitted } = useQuiz();
+
+  useEffect(() => {
+    setQuizSubmitted(false);
+  }, [setQuizSubmitted]);
+
   return (
     <>
       <h1 className="text-4xl font-bold mb-6">Module 3: Sustainable Architecture</h1>
@@ -20,10 +29,11 @@ export default function Module3Page() {
         <li>Optimize system-wide energy consumption</li>
         <li>Evaluate architectural decisions</li>
       </ul>
-      <CompactQuiz
-        questions={[questions[0]]}
-      />
 
+      <CompactQuiz 
+        questions={[questions[2]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
+        />
       <h2 className="text-2xl font-bold mt-8 mb-4">Content</h2>
       <p>
         This module will be expanded with detailed content about sustainable architecture

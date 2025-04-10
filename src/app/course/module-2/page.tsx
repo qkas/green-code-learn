@@ -1,7 +1,16 @@
+"use client";
+import { useEffect } from 'react';
+import { useQuiz } from '@/context/QuizContext';
 import CompactQuiz from "@/components/ui/CompactQuiz";
 import { questions } from "@/data/questions";
 
 export default function Module2Page() {
+  const { setQuizSubmitted } = useQuiz();
+
+  useEffect(() => {
+    setQuizSubmitted(false);
+  }, [setQuizSubmitted]);
+
   return (
     <>
       <h1 className="text-4xl font-bold mb-6">Module 2: Energy-Efficient Algorithms</h1>
@@ -20,8 +29,9 @@ export default function Module2Page() {
         <li>Measure and benchmark energy usage</li>
       </ul>
 
-      <CompactQuiz
-        questions={[questions[1]]}
+      <CompactQuiz 
+        questions={[questions[1]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
       />
 
       <h2 className="text-2xl font-bold mt-8 mb-4">Content</h2>

@@ -1,4 +1,16 @@
+"use client";
+import { useEffect } from 'react';
+import { useQuiz } from '@/context/QuizContext';
+import CompactQuiz from "@/components/ui/CompactQuiz";
+import { questions } from "@/data/questions";
+
 export default function Module1Page() {
+  const { setQuizSubmitted } = useQuiz();
+
+  useEffect(() => {
+    setQuizSubmitted(false);
+  }, [setQuizSubmitted]);
+
   return (
     <>
       <h1 className="text-4xl font-bold mb-6">Module 1: Introduction to Green Code</h1>
@@ -22,6 +34,12 @@ export default function Module1Page() {
         This module will be expanded with detailed content about sustainable programming
         practices, including code examples and practical exercises.
       </p>
+
+      <CompactQuiz 
+        questions={[questions[0]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
+      />
+      
     </>
   );
 }
