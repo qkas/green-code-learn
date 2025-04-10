@@ -38,8 +38,8 @@ export default function CompactQuiz({ questions }: QuizProps) {
   };
 
   return (
-    <div className="bg-accent/5 rounded-lg p-3 sm:p-4 w-full max-w-lg">
-      <h3 className="text-sm sm:text-base font-medium mb-2">
+    <div className="bg-accent/5 border border-solid border-highlight rounded-lg p-3 sm:p-4 w-full max-w-lg">
+      <h3 className="text-sm sm:text-base text-accent font-medium mb-2">
         {questions[currentQuestion].question}
       </h3>
       
