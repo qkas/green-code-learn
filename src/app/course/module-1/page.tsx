@@ -1,4 +1,16 @@
+"use client";
+import { useEffect } from 'react';
+import { useQuiz } from '@/context/QuizContext';
+import CompactQuiz from "@/components/ui/CompactQuiz";
+import { questions } from "@/data/questions";
+
 export default function Module1Page() {
+  const { setQuizSubmitted } = useQuiz();
+
+  useEffect(() => {
+    setQuizSubmitted(false);
+  }, [setQuizSubmitted]);
+
   return (
     <>
       <h1 className="text-4xl font-bold mb-6">Module 1: Introduction to Green Code</h1>
@@ -64,6 +76,12 @@ export default function Module1Page() {
         and using static analysis and profiling tools. Smart data structure choices and
         clean code help create efficient, eco-friendly software.
       </p>
+
+      <CompactQuiz 
+        questions={[questions[0]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
+      />
+      
     </>
   );
 }

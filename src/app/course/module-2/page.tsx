@@ -1,4 +1,16 @@
+"use client";
+import { useEffect } from 'react';
+import { useQuiz } from '@/context/QuizContext';
+import CompactQuiz from "@/components/ui/CompactQuiz";
+import { questions } from "@/data/questions";
+
 export default function Module2Page() {
+  const { setQuizSubmitted } = useQuiz();
+
+  useEffect(() => {
+    setQuizSubmitted(false);
+  }, [setQuizSubmitted]);
+
   return (
     <>
       <h1 className="text-4xl font-bold mb-6">Module 2: Cloud Services and Resource Management</h1>
@@ -55,7 +67,13 @@ export default function Module2Page() {
         and environmental impact.
       </p>
 
+      <CompactQuiz 
+        questions={[questions[1]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
+      />
+
       <h2 className="text-2xl font-bold mt-8 mb-4">Summary</h2>
+
       <p>
         Module 2 highlights strategies for reducing energy use in cloud environments and managing
         memory, storage, and networking efficiently. It also covers the importance of scalable,
