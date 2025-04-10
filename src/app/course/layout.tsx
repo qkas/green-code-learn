@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { NextModuleLink } from "@/components/ui/NextModuleLink";
+import { QuizProvider } from "@/context/QuizContext";
 
 const modules = [
   {
@@ -60,29 +61,31 @@ export default function CourseLayout({
   }
 
   return (
-    <div className="flex flex-wrap sm:flex-nowrap gap-10 sm:divide-none justify-between p-10 sm:mt-10">
-      <div className="bg-background">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">Course Modules</h2>
-        <nav className="space-y-2">
-          {modules.map((module) => (
-            <Link
-              key={module.id}
-              href={module.path}
-              className={`block p-3 rounded-lg ${pathname === module.path
-                  ? "border-2 border-accent"
-                  : "border-2 border-background"
-                }`}
-            >
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold">{module.title}</h3>
-              <p className="text-base sm:text-lg lg:text-xl opacity-80">{module.description}</p>
-            </Link>
-          ))}
-        </nav>
+    <QuizProvider>
+      <div className="flex flex-wrap sm:flex-nowrap gap-10 sm:divide-none justify-between p-10 sm:mt-10">
+        <div className="bg-background">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">Course Modules</h2>
+          <nav className="space-y-2">
+            {modules.map((module) => (
+              <Link
+                key={module.id}
+                href={module.path}
+                className={`block p-3 rounded-lg ${pathname === module.path
+                    ? "border-2 border-accent"
+                    : "border-2 border-background"
+                  }`}
+              >
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold">{module.title}</h3>
+                <p className="text-base sm:text-lg lg:text-xl opacity-80">{module.description}</p>
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <div className="sm:mx-auto w-full">
+          {children}
+          <NextModuleLink currentPath={pathname} />
+        </div>
       </div>
-      <div className="sm:mx-auto w-full">
-        {children}
-        <NextModuleLink currentPath={pathname} />
-      </div>
-    </div>
+    </QuizProvider>
   );
 }
