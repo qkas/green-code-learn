@@ -90,26 +90,30 @@ export default function TestPage() {
                   : 'hover:border-accent'
                 } ${quizState.isSubmitted
                   ? index === currentQuestion.correctAnswer
-                    ? 'border-green-500 border-dashed'
+                    ? quizState.answers[quizState.currentQuestion] === index
+                      ? 'border-green-500'
+                      : 'border-green-500 border-dashed'
                     : quizState.answers[quizState.currentQuestion] === index
                       ? 'border-red-500'
                       : ''
-                  : ''
-                } text-base sm:text-lg lg:text-xl`}
+                  : ''} text-base sm:text-lg lg:text-xl`}
               disabled={quizState.isSubmitted}
             >
-              {quizState.isSubmitted
-                ? index === currentQuestion.correctAnswer
-                  ? <Check className='text-green-500' />
-                  : quizState.answers[quizState.currentQuestion] === index
-                    ? <Close className='text-red-500' />
-                    : <span className='text-green-500'>
-                      {alphabets[index]}
-                    </span>
-                : <span className={`${quizState.answers[quizState.currentQuestion] === index ? 'text-[--accent]' : ''}`}>
-                  {alphabets[index]}
-                </span>
-              }
+              <div>
+
+                {quizState.isSubmitted
+                  ? index === currentQuestion.correctAnswer
+                    ? <Check className='text-green-500' />
+                    : quizState.answers[quizState.currentQuestion] === index
+                      ? <Close className='text-red-500' />
+                      : <span className='text-foreground'>
+                        {alphabets[index]}
+                      </span>
+                  : <span className={`${quizState.answers[quizState.currentQuestion] === index ? 'text-[--accent]' : ''}`}>
+                    {alphabets[index]}
+                  </span>
+                }
+              </div>
               <span>{option}</span>
             </button>
           ))}
