@@ -103,7 +103,7 @@ export default function TestPage() {
                 <button
                   key={optionIndex}
                   onClick={() => handleAnswerSelect(optionIndex, index)}
-                  className={`flex gap-5 w-full p-4 text-left rounded-lg border-2 transition-all duration-300 ease-in-out transform hover:scale-110 active:scale-95 ${quizState.answers[index] === optionIndex
+                  className={`flex gap-5 w-full p-4 text-left rounded-lg border-2 transition-colors ${quizState.answers[index] === optionIndex
                     ? 'border-accent bg-accent/10'
                     : quizState.isSubmitted
                       ? ''
@@ -170,7 +170,7 @@ export default function TestPage() {
           <a
             href="/certificate.pdf"
             download
-            className="px-4 py-2 rounded-lg bg-foreground font-bold border-2 text-center border-foreground text-background sm:px-8 lg:px-10 text-lg lg:text-xl transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 hover:bg-foreground/90 hover:bg-background hover:text-[--foreground]"
+            className="px-4 py-2 rounded-lg bg-foreground font-bold border-2 text-center border-foreground text-background sm:px-8 lg:px-10 text-lg lg:text-xl transition hover:bg-foreground/90 hover:scale-105 hover:bg-background hover:text-[--foreground]"
           >
             Download Certificate
           </a>
