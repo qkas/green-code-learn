@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useQuiz } from "@/context/QuizContext";
 
 const modules = [
   {
@@ -28,32 +30,29 @@ const modules = [
 ];
 
 export function NextModuleLink({ currentPath }: { currentPath: string }) {
+  const { isQuizSubmitted } = useQuiz();
   const currentIndex = modules.findIndex((module) => module.path === currentPath);
   const nextModule = modules[currentIndex + 1];
 
   if (currentPath === "/course") return null;
 
-  if (!nextModule) { // last module
-    return (
-      <div className="mt-12 flex justify-end">
-        <Link
-          href="/test"
-          className="flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-[--accent] bg-[--accent] text-background hover:border-[--accent] hover:scale-105 hover:bg-background hover:text-[--accent] transition"
-        >
-          Take Final Test
-        </Link>
-      </div>
-    );
-  }
-
   return (
     <div className="mt-12 flex justify-end">
       <Link
-        href={nextModule.path}
-        className="flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-[--accent] bg-[--accent] text-background hover:border-[--accent] hover:scale-105 hover:bg-background hover:text-[--accent] transition"
+        href={nextModule?.path || "/test"}
+        className={`flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-accent
+          ${!isQuizSubmitted
+            ? 'bg-gray-300 border-gray-300 cursor-not-allowed opacity-50'
+            : 'bg-accent text-background hover:border-accent hover:scale-105 hover:bg-background hover:text-accent'
+          } transition`}
+        onClick={(e) => {
+          if (!isQuizSubmitted) {
+            e.preventDefault();
+          }
+        }}
       >
-        Next Module: {nextModule.title}
+        {nextModule ? `Next Module: ${nextModule.title}` : 'Take Final Test'}
       </Link>
     </div>
   );
-} 
+}
