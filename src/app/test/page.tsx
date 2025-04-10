@@ -90,12 +90,13 @@ export default function TestPage() {
                   : 'hover:border-accent'
                 } ${quizState.isSubmitted
                   ? index === currentQuestion.correctAnswer
-                    ? 'border-green-500 border-dashed'
+                    ? quizState.answers[quizState.currentQuestion] === index
+                      ? 'border-green-500'
+                      : 'border-green-500 border-dashed'
                     : quizState.answers[quizState.currentQuestion] === index
                       ? 'border-red-500'
                       : ''
-                  : ''
-                } text-base sm:text-lg lg:text-xl`}
+                  : ''} text-base sm:text-lg lg:text-xl`}
               disabled={quizState.isSubmitted}
             >
               <div>
