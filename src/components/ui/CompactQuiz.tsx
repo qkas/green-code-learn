@@ -42,7 +42,7 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
 
   return (
     <div className="bg-accent/5 rounded-lg border-2 border-accent p-3 mt-4 sm:p-4 w-full max-w-lg">
-      <h3 className="text-sm sm:text-base text-highlight font-medium mb-2">
+      <h3 className="text-xl font-semibold sm:text-base text-foreground mb-2">
         {questions[currentQuestion].question}
       </h3>
       
@@ -52,7 +52,7 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
             key={index}
             onClick={() => handleAnswer(index)}
             disabled={isSubmitted}
-            className={`w-full p-1.5 text-xs sm:text-sm text-left rounded border flex items-center gap-2 ${
+            className={`w-full p-2.5 text-xs sm:text-sm text-left rounded border flex items-center gap-2 ${
               !isSubmitted
                 ? answers[currentQuestion] === index 
                   ? 'border-accent bg-accent/10' 
@@ -77,7 +77,7 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
                 )}
               </>
             )}
-            <span className="line-clamp-2">{option}</span>
+            <span className="line-clamp-2 font-semibold text-base">{option}</span>
           </button>
         ))}
       </div>
