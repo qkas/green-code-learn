@@ -46,18 +46,18 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
         Quiz <span className='text-red-500'>*</span>
       </h2>
       
-      <div className="bg-accent/5 rounded-lg border-2 border-accent p-3 mt-4 sm:p-4 w-full max-w-lg">
-        <h3 className="text-xl font-semibold sm:text-base text-foreground mb-2">
+      <div className="p-3 mt-4 sm:p-4 w-full max-w-lg">
+        <h3 className="font-semibold text-base sm:text-lg lg:text-xl mb-2">
           {questions[currentQuestion].question}
         </h3>
 
-        <div className="space-y-1.5">
+        <div className="space-y-2">
           {questions[currentQuestion].options.map((option, index) => (
             <button
               key={index}
               onClick={() => handleAnswer(index)}
               disabled={isSubmitted}
-              className={`w-full p-2.5 text-xs sm:text-sm text-left rounded border flex items-center gap-2 ${!isSubmitted
+              className={`w-full p-2 text-xs sm:text-base lg:text-lg text-left rounded border flex items-center gap-2 ${!isSubmitted
                   ? answers[currentQuestion] === index
                     ? 'border-accent bg-accent/10'
                     : 'border-gray-200 hover:border-accent'
@@ -81,7 +81,7 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
                     )}
                 </>
               )}
-              <span className="line-clamp-2 font-semibold text-base">{option}</span>
+              <span className="line-clamp-2">{option}</span>
             </button>
           ))}
         </div>
