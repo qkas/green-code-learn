@@ -68,7 +68,7 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
                       ? 'border-green-500'
                       : 'border-red-500'
                     : index === questions[currentQuestion].correctAnswer
-                      ? 'border-green-500'
+                      ? 'border-green-500 border-dashed'
                       : 'border-gray-200'
                 }`}
             >
