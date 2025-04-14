@@ -69,11 +69,6 @@ export default function Module1Page() {
         <li>Use lazy evaluation where possible</li>
       </ul>
       
-      <CompactQuiz 
-        questions={[questions[0]]} 
-        onQuizSubmit={() => setQuizSubmitted(true)}
-      />
-
       <h2 className="text-2xl font-bold mt-8 mb-4">Summary</h2>
       <p>
         Module 1 emphasizes optimizing code to reduce energy usage and improve performance.
@@ -82,7 +77,10 @@ export default function Module1Page() {
         clean code help create efficient, eco-friendly software.
       </p>
 
-      
+      <CompactQuiz 
+        questions={[questions[0]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
+      />
     </>
   );
 }

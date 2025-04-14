@@ -52,6 +52,7 @@ export default function Module3Page() {
         <li>Use energy-efficient database technologies with indexing and caching</li>
         <li>Distribute workloads intelligently in distributed systems</li>
       </ul>
+      
       <img src="/module3_sql_cleanup.png" alt="SQL data cleanup example" className="rounded shadow-md my-4" />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">5. Practical Tips for Green Coding</h3>
@@ -62,16 +63,17 @@ export default function Module3Page() {
         <li>Use modular code and energy-efficient hardware</li>
       </ul>
 
-      <CompactQuiz 
-        questions={[questions[2]]} 
-        onQuizSubmit={() => setQuizSubmitted(true)}
-        />
       <h2 className="text-2xl font-bold mt-8 mb-4">Summary</h2>
       <p>
         Module 3 provides a wide view on sustainable software development, from code clarity
         and ecological web design to programming language choices and energy-conscious databases.
         Practical tips equip developers to reduce software’s environmental impact.
       </p>
+
+      <CompactQuiz 
+        questions={[questions[2]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
+        />
     </>
   );
 }

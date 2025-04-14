@@ -67,11 +67,6 @@ export default function Module2Page() {
         and environmental impact.
       </p>
 
-      <CompactQuiz 
-        questions={[questions[1]]} 
-        onQuizSubmit={() => setQuizSubmitted(true)}
-      />
-
       <h2 className="text-2xl font-bold mt-8 mb-4">Summary</h2>
 
       <p>
@@ -79,6 +74,11 @@ export default function Module2Page() {
         memory, storage, and networking efficiently. It also covers the importance of scalable,
         energy-aware database configurations and responsible use of distributed computing.
       </p>
+      
+      <CompactQuiz 
+        questions={[questions[1]]} 
+        onQuizSubmit={() => setQuizSubmitted(true)}
+      />
     </>
   );
 }
