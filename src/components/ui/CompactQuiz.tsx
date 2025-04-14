@@ -41,6 +41,10 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
   };
 
   return (
+    <>
+      <h2 className='text-2xl font-bold mt-8 mb-4"'>
+        Quiz
+      </h2>
     <div className="bg-accent/5 rounded-lg border-2 border-accent p-3 mt-10 sm:p-4 w-full max-w-lg">
       <h3 className="text-xl font-semibold sm:text-base text-foreground mb-2">
         {questions[currentQuestion].question}
@@ -82,5 +86,6 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
         ))}
       </div>
     </div>
+    </>
   );
 }
