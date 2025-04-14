@@ -22,6 +22,8 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { setQuizSubmitted } = useQuiz();
 
+  const alphabets = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
   const handleAnswer = (optionIndex: number) => {
     if (isSubmitted) return;
 
@@ -57,7 +59,7 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
               key={index}
               onClick={() => handleAnswer(index)}
               disabled={isSubmitted}
-              className={`w-full p-2 text-xs sm:text-base lg:text-lg text-left rounded border flex items-center gap-2 ${!isSubmitted
+              className={`w-full p-2 text-xs sm:text-base lg:text-lg text-left rounded border flex items-center gap-2 sm:gap-4 ${!isSubmitted
                   ? answers[currentQuestion] === index
                     ? 'border-accent bg-accent/10'
                     : 'border-gray-200 hover:border-accent'
@@ -80,6 +82,9 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
                       <Close className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />
                     )}
                 </>
+              )}
+              {(!isSubmitted || answers[currentQuestion] !== index) && (
+                alphabets[index]
               )}
               <span className="line-clamp-2">{option}</span>
             </button>
