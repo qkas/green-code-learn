@@ -37,10 +37,10 @@ export function NextModuleLink({ currentPath }: { currentPath: string }) {
   if (currentPath === "/course") return null;
 
   return (
-    <div className="mt-12 flex justify-end">
+    <div className="mt-5 flex flex-col items-end justify-end">
       <Link
         href={nextModule?.path || "/test"}
-        className={`flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-lg font-bold rounded-lg border-2 border-accent
+        className={`flex py-2 text-center gap-2 items-center uppercase w-fit px-4 sm:px-8 lg:px-10 font-bold rounded-lg border-2 border-accent
           ${!isQuizSubmitted
             ? 'bg-gray-300 border-gray-300 cursor-not-allowed opacity-50'
             : 'bg-accent text-background hover:border-accent hover:scale-105 hover:bg-background hover:text-accent'
@@ -53,6 +53,12 @@ export function NextModuleLink({ currentPath }: { currentPath: string }) {
       >
         {nextModule ? `Next Module: ${nextModule.title}` : 'Take Final Test'}
       </Link>
+      {isQuizSubmitted
+        ? null
+        : <span className="text-red-500 text-sm sm:text-base lg:text-lg">
+          Please answer the quiz to unlock the next module.
+        </span>
+      }
     </div>
   );
 }
