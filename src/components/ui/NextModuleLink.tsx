@@ -56,7 +56,7 @@ export function NextModuleLink({ currentPath }: { currentPath: string }) {
       {isQuizSubmitted
         ? null
         : <span className="text-red-500 text-sm sm:text-base lg:text-lg">
-          Please answer the quiz to unlock the next module.
+          Please answer the quiz to unlock the {nextModule ? 'next module' : 'final test'}.
         </span>
       }
     </div>
