@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { questions } from '@/data/questions';
+import { finalQuestions } from '@/data/questions';
 import Link from 'next/link';
 import { ArrowBackIos, Check, Close } from '@mui/icons-material';
 
@@ -15,7 +15,7 @@ export interface QuizState {
 export default function TestPage() {
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestion: 0,
-    answers: Array(questions.length).fill(-1),
+    answers: Array(finalQuestions.length).fill(-1),
     score: 0,
     isSubmitted: false,
   });
@@ -50,14 +50,14 @@ export default function TestPage() {
 
   const handleSubmit = () => {
     const score = quizState.answers.reduce((total, answer, index) => {
-      return total + (answer === questions[index].correctAnswer ? 1 : 0);
+      return total + (answer === finalQuestions[index].correctAnswer ? 1 : 0);
     }, 0);
 
     setQuizState({ ...quizState, score, isSubmitted: true });
   };
 
   const handleNext = () => {
-    if (quizState.currentQuestion < questions.length - 1) {
+    if (quizState.currentQuestion < finalQuestions.length - 1) {
       setQuizState({ ...quizState, currentQuestion: quizState.currentQuestion + 1 });
     }
   };
@@ -68,7 +68,7 @@ export default function TestPage() {
     }
   };
 
-  const currentQuestion = questions[quizState.currentQuestion];
+  const currentQuestion = finalQuestions[quizState.currentQuestion];
 
   return (
     <div className="max-w-2xl mx-auto p-6">
@@ -92,7 +92,7 @@ export default function TestPage() {
       </h1>
 
       <div className="space-y-12">
-        {questions.map((question, index) => (
+        {finalQuestions.map((question, index) => (
           <div key={index} id={`question-${index}`} className="scroll-mt-[50vh]">
             <h2 className="text-xl sm:text-2xl lg:text-3xl mb-4">
               Question {question.id}: {question.question}
@@ -161,10 +161,10 @@ export default function TestPage() {
               You <span className='text-green-500'>passed</span> the test!
             </h3>
             <p className="text-base sm:text-lg lg:text-xl">
-              Your score: {quizState.score} out of {questions.length}
+              Your score: {quizState.score} out of {finalQuestions.length}
             </p>
             <p className="text-base sm:text-lg lg:text-xl">
-              Percentage: {(quizState.score / questions.length * 100).toFixed(1)}%
+              Percentage: {(quizState.score / finalQuestions.length * 100).toFixed(1)}%
             </p>
           </div>
           <a

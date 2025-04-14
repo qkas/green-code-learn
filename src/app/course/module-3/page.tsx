@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useQuiz } from '@/context/QuizContext';
 import CompactQuiz from "@/components/ui/CompactQuiz";
-import { questions } from "@/data/questions";
+import { moduleQuestions } from "@/data/questions";
 import Image from 'next/image';
 
 export default function Module3Page() {
@@ -84,7 +84,7 @@ export default function Module3Page() {
       </p>
 
       <CompactQuiz 
-        questions={[questions[2]]} 
+        questions={[moduleQuestions[2]]} 
         onQuizSubmit={() => setQuizSubmitted(true)}
         />
     </>
