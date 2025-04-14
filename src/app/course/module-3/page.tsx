@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useQuiz } from '@/context/QuizContext';
 import CompactQuiz from "@/components/ui/CompactQuiz";
 import { questions } from "@/data/questions";
+import Image from 'next/image';
 
 export default function Module3Page() {
   const { setQuizSubmitted } = useQuiz();
@@ -37,7 +38,13 @@ export default function Module3Page() {
         <li>Compress and lazy-load media to reduce bandwidth</li>
         <li>Design minimalist, low-power websites</li>
       </ul>
-      <img src="/module3_lazy_loading.png" alt="Lazy loading example in HTML" className="rounded shadow-md my-4" />
+      <Image 
+        src="/module3_lazy_loading.png" 
+        alt="Lazy loading example in HTML" 
+        width={482} 
+        height={288} 
+        className="rounded shadow-md my-4" 
+      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">3. Energy Consumption of Programming Languages</h3>
       <p>
@@ -53,7 +60,13 @@ export default function Module3Page() {
         <li>Distribute workloads intelligently in distributed systems</li>
       </ul>
       
-      <img src="/module3_sql_cleanup.png" alt="SQL data cleanup example" className="rounded shadow-md my-4" />
+      <Image 
+        src="/module3_sql_cleanup.png" 
+        alt="SQL data cleanup example" 
+        width={395} 
+        height={70} 
+        className="rounded shadow-md my-4" 
+      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">5. Practical Tips for Green Coding</h3>
       <ul className="list-disc pl-6 mb-4">

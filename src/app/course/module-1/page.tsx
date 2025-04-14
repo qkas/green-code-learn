@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useQuiz } from '@/context/QuizContext';
 import CompactQuiz from "@/components/ui/CompactQuiz";
 import { questions } from "@/data/questions";
+import Image from 'next/image';
 
 export default function Module1Page() {
   const { setQuizSubmitted } = useQuiz();
@@ -38,7 +39,14 @@ export default function Module1Page() {
         and using static code analysis tools can significantly reduce energy consumption.
         Lean and concise code enhances performance and is more environmentally friendly.
       </p>
-      <img src="/module1_energy_efficient_code.png" alt="Energy-efficient code illustration" className="rounded shadow-md my-4" />
+
+      <Image 
+        src="/module1_energy_efficient_code.png" 
+        alt="Energy-efficient code illustration" 
+        width={443} 
+        height={154} 
+        className="rounded shadow-md my-4" 
+      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">2. Reducing Unnecessary Computations</h3>
       <ul className="list-disc pl-6 mb-4">
@@ -53,7 +61,14 @@ export default function Module1Page() {
         Choosing algorithms with better time complexity (e.g., O(log n) vs. O(n²)) reduces CPU cycles.
         Consider using data structures like hash tables for fast access, and always benchmark alternatives.
       </p>
-      <img src="/module1_binary_search_vs_linear.png" alt="Binary search vs linear search" className="rounded shadow-md my-4" />
+      
+      <Image 
+        src="/module1_binary_search_vs_linear.png" 
+        alt="Binary search vs linear search" 
+        width={410} 
+        height={328} 
+        className="rounded shadow-md my-4" 
+      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">4. Using Analysis and Profiling Tools</h3>
       <ul className="list-disc pl-6 mb-4">

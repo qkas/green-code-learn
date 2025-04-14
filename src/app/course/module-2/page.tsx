@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useQuiz } from '@/context/QuizContext';
 import CompactQuiz from "@/components/ui/CompactQuiz";
 import { questions } from "@/data/questions";
+import Image from 'next/image';
 
 export default function Module2Page() {
   const { setQuizSubmitted } = useQuiz();
@@ -30,7 +31,13 @@ export default function Module2Page() {
         Avoid memory leaks and use memory-efficient data structures. Cloud-based testing should be
         optimized to avoid unnecessary consumption.
       </p>
-      <img src="/images/module2_memory_management.png" alt="Efficient memory management" className="rounded shadow-md my-4" />
+      <Image 
+        src="/module2_memory_management.png" 
+        alt="Efficient memory management" 
+        width={505} 
+        height={68} 
+        className="rounded shadow-md my-4" 
+      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">2. Avoiding Unnecessary Data Storage</h3>
       <p>
@@ -44,14 +51,26 @@ export default function Module2Page() {
         <li>Select appropriate environments</li>
         <li>Shut down test instances immediately after use</li>
       </ul>
-      <img src="/module2_cloud_testing.png" alt="Cloud-based testing optimization" className="rounded shadow-md my-4" />
+      <Image 
+        src="/module2_cloud_testing.png" 
+        alt="Cloud-based testing optimization" 
+        width={582} 
+        height={204} 
+        className="rounded shadow-md my-4" 
+      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">4. Reducing Network Traffic</h3>
       <p>
         Minimize data transmission through optimized data transfer, efficient protocols,
         and avoiding unnecessary exchanges. This reduces load on servers and networking hardware.
       </p>
-      <img src="/module2_network_traffic.png" alt="Reducing network traffic" className="rounded shadow-md my-4" />
+      <Image 
+        src="/module2_network_traffic.png" 
+        alt="Reducing network traffic" 
+        width={253} 
+        height={690} 
+        className="rounded shadow-md my-4" 
+      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">5. Energy-Efficient Database Solutions</h3>
       <p>
