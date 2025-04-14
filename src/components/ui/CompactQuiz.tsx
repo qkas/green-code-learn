@@ -43,7 +43,7 @@ export default function CompactQuiz({ questions, onQuizSubmit }: QuizProps) {
   return (
     <>
       <h2 className='text-2xl font-bold mt-8 mb-4"'>
-        Quiz
+        Quiz <span className='text-red-500'>*</span>
       </h2>
       
       <div className="bg-accent/5 rounded-lg border-2 border-accent p-3 mt-4 sm:p-4 w-full max-w-lg">
