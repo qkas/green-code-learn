@@ -64,13 +64,6 @@ export default function Module2Page() {
         Minimize data transmission through optimized data transfer, efficient protocols,
         and avoiding unnecessary exchanges. This reduces load on servers and networking hardware.
       </p>
-      <Image 
-        src="/module2_network_traffic.png" 
-        alt="Reducing network traffic" 
-        width={253} 
-        height={690} 
-        className="rounded shadow-md my-4" 
-      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">5. Energy-Efficient Database Solutions</h3>
       <p>
