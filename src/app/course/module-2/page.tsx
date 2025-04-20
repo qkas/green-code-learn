@@ -51,13 +51,6 @@ export default function Module2Page() {
         <li>Select appropriate environments</li>
         <li>Shut down test instances immediately after use</li>
       </ul>
-      <Image 
-        src="/module2_cloud_testing.png" 
-        alt="Cloud-based testing optimization" 
-        width={582} 
-        height={204} 
-        className="rounded shadow-md my-4" 
-      />
 
       <h3 className="text-xl font-semibold mt-6 mb-2">4. Reducing Network Traffic</h3>
       <p>
